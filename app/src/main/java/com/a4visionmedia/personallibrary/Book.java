@@ -10,6 +10,12 @@ public class Book {
     private String publisher;
     private String category;
     private String noIsbn;
+
+    public Book(String title, String author) {
+        this.title = title;
+        this.author = author;
+    }
+
     private String cover;
 
     public Book(String title, String author, String publisher, String category, String noIsbn, String cover) {

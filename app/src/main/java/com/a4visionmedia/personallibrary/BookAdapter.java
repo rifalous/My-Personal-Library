@@ -1,103 +1,89 @@
 package com.a4visionmedia.personallibrary;
 
-import android.annotation.SuppressLint;
 import android.content.Context;
-import android.content.Intent;
-import android.os.Build;
-import android.support.annotation.RequiresApi;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
+
+import com.squareup.picasso.Picasso;
+
+import java.util.List;
 
 /**
  * Created by Rifal on 28/03/2018.
  */
 
-class BookViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener,View.OnLongClickListener
-{
-    TextView txtTitle,txtAuthor,txtPublisher,txtCategory,txtISBN;
-    ImageView cover;
-    private ItemClickListener itemClickListener;
+public class BookAdapter extends RecyclerView.Adapter<BookAdapter.ViewHolder> {
 
-    @SuppressLint("CutPasteId")
-    BookViewHolder(View itemView) {
-        super(itemView);
+    private List<Book> books;
+    private OnClickListener listener;
+    private Context context;
 
-        txtTitle = (TextView)itemView.findViewById(R.id.titleBook);
-        txtAuthor = (TextView)itemView.findViewById(R.id.authorBook);
-        cover = (ImageView)itemView.findViewById(R.id.coverBook);
-
-        // Set Event Listener
-        itemView.setOnClickListener(this);
-        itemView.setOnLongClickListener(this);
-    }
-
-    void setItemClickListener(ItemClickListener itemClickListener) {
-        this.itemClickListener = itemClickListener;
+    public BookAdapter(List<Book> books, Context context, OnClickListener listener) {
+        this.books = books;
+        this.context = context;
+        this.listener = listener;
     }
 
     @Override
-    public void onClick(View v) {
-        itemClickListener.onClick(v,getAdapterPosition(),false);
-
+    public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+        View view = LayoutInflater.from(parent.getContext())
+                .inflate(R.layout.book_item, parent, false);
+        return new ViewHolder(view);
     }
 
     @Override
-    public boolean onLongClick(View v) {
-        itemClickListener.onClick(v,getAdapterPosition(),true);
-        return true;
-    }
-}
+    public void onBindViewHolder(ViewHolder holder, int position) {
+        Book book = books.get(position);
+        String imgUrl = book.getCover();
 
-public class BookAdapter extends RecyclerView.Adapter<BookViewHolder> {
-    private Book book;
-    private Context mContext;
-    private LayoutInflater inflater;
-
-    public BookAdapter(Book book, Context mContext) {
-        this.book = book;
-        this.mContext = mContext;
-        inflater = LayoutInflater.from(mContext);
-    }
-
-    @Override
-    public BookViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        View itemView = inflater.inflate(R.layout.book_item,parent,false);
-        return new BookViewHolder(itemView);
-    }
-
-    @RequiresApi(api = Build.VERSION_CODES.GINGERBREAD)
-    @Override
-    public void onBindViewHolder(BookViewHolder holder, int position) {
-
-        holder.txtTitle.setText(book.getTitle());
-        holder.txtAuthor.setText(book.getAuthor());
-        if (book.getCover().isEmpty()) {
-            holder.cover.setImageResource(R.drawable.no_image);
-        } else {
-            Picasso.with(mContext).load(book.getCover()).into(holder.cover);
+        holder.bind(book, listener);
+        holder.booksTitle.setText(book.getTitle());
+        holder.booksAuthor.setText(book.getAuthor());
+        if(imgUrl==null){
+            holder.booksImage.setImageResource(R.drawable.no_image);
+        }else{
+            Picasso.with(context).load(imgUrl).into(holder.booksImage);
         }
-
-        holder.setItemClickListener(new ItemClickListener() {
-            @Override
-            public void onClick(View view, int position, boolean isLongClick) {
-                if(!isLongClick)
-                {
-                    Intent intent;
-                    intent = new Intent(mContext, BookDetailActivity.class);
-                    /*intent.putExtra("ARTICLE_URL", rssObject.getItems().get(position).getLink());
-                    intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);*/
-                    mContext.startActivity(intent);
-                }
-            }
-        });
+        //holder.booksAuthor.setText(feed.getmUrl());
     }
 
     @Override
     public int getItemCount() {
-        return 0;
+        try {
+            return books.size();
+        }catch (NullPointerException e){
+            Toast.makeText(context,"Error Timed Out",Toast.LENGTH_SHORT);
+            return 0;
+        }
     }
+
+    public class ViewHolder extends RecyclerView.ViewHolder {
+
+        ImageView booksImage;
+        TextView booksTitle;
+        TextView booksAuthor;
+
+        public ViewHolder(View itemView) {
+            super(itemView);
+
+            booksImage = itemView.findViewById(R.id.coverBook);
+            booksTitle = itemView.findViewById(R.id.titleBook);
+            booksAuthor = itemView.findViewById(R.id.authorBook);}
+
+        public void bind(final Book feed, final OnClickListener listener) {
+            itemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    listener.onItemClick(feed);
+                }
+            });
+        }
+    }
+
+
 }
