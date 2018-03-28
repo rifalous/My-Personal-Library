@@ -5,7 +5,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:orientation="vertical"
     android:padding="8dp"
-    tools:context=".InputBookActivity">
+    tools:context=".InputBookActivity"
+    android:background="@color/color_bg">
 
     <LinearLayout
         android:id="@+id/judul"
@@ -30,8 +31,7 @@
             <EditText
                 android:id="@+id/judul_buku"
                 style="@style/EditorFieldStyle"
-                android:hint="@string/masukkan_judul_buku"
-                android:inputType="textCapWords" />
+                android:hint="@string/masukkan_judul_buku"/>
 
         </LinearLayout>
     </LinearLayout>
@@ -60,8 +60,7 @@
             <EditText
                 android:id="@+id/pengarang_buku"
                 style="@style/EditorFieldStyle"
-                android:hint="@string/masukkan_nama_pengarang"
-                android:inputType="textCapWords" />
+                android:hint="@string/masukkan_nama_pengarang"/>
 
         </LinearLayout>
     </LinearLayout>
@@ -90,8 +89,7 @@
             <EditText
                 android:id="@+id/penerbit_buku"
                 style="@style/EditorFieldStyle"
-                android:hint="@string/masukkan_nama_penerbit"
-                android:inputType="textCapWords" />
+                android:hint="@string/masukkan_nama_penerbit"/>
 
         </LinearLayout>
     </LinearLayout>
@@ -119,8 +117,7 @@
             <EditText
                 android:id="@+id/kategori_buku"
                 style="@style/EditorFieldStyle"
-                android:hint="@string/masukkan_kategori_buku"
-                android:inputType="textCapWords" />
+                android:hint="@string/masukkan_kategori_buku"/>
 
         </LinearLayout>
     </LinearLayout>
@@ -179,6 +176,8 @@
                 android:id="@+id/upload_button"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
+                android:background="@drawable/button"
+                style="@style/button_text"
                 android:text="@string/upload_cover_buku" />
 
         </LinearLayout>

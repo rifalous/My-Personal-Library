@@ -12,6 +12,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.Toast;
 
 import java.io.BufferedReader;
@@ -39,6 +40,7 @@ public class InputBookActivity extends AppCompatActivity {
     private String ImageName = "image_name";
     private boolean check = true;
     private Bitmap FixBitmap;
+    private ImageView mShowSelectedImage;
 
     /*Buat ImageView Buat nampilin preview cover Bku yang mau diupload gi
     * nama imageViewnya ini mShowSelectedImage ya~*/
@@ -86,7 +88,7 @@ public class InputBookActivity extends AppCompatActivity {
 
                 FixBitmap = MediaStore.Images.Media.getBitmap(getContentResolver(), uri);
 
-                //mShowSelectedImage.setImageBitmap(FixBitmap);
+                mShowSelectedImage.setImageBitmap(FixBitmap);
 
             } catch (IOException e) {
 
@@ -123,6 +125,7 @@ public class InputBookActivity extends AppCompatActivity {
         mNoISBN = findViewById(R.id.isbn_buku);
 
         mSubmit = findViewById(R.id.upload_button);
+//        mSelectImage = findViewById();
         /*Buat button buat mSelectImage gi*/
     }
 

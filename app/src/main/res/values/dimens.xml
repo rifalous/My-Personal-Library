@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="card_margin">5dp</dimen>
+    <dimen name="card_book_radius">0dp</dimen>
+    <dimen name="book_title_padding">10dp</dimen>
+</resources>

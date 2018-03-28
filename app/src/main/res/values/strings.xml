@@ -1,19 +1,19 @@
 <resources>
     <string name="app_name">Personal Library</string>
-    <string name="judul">Judul</string>
-    <string name="masukkan_judul_buku">Masukkan Judul Buku</string>
-    <string name="pengarang">Pengarang</string>
-    <string name="masukkan_nama_pengarang">Masukkan Nama Pengarang</string>
-    <string name="penerbit">Penerbit</string>
-    <string name="kategori">Kategori</string>
+    <string name="judul">JUDUL</string>
+    <string name="masukkan_judul_buku">Judul Buku</string>
+    <string name="pengarang">PENGARANG</string>
+    <string name="masukkan_nama_pengarang">Nama Pengarang</string>
+    <string name="penerbit">PENERBIT</string>
+    <string name="kategori">KATEGORI</string>
     <string name="no_isbn">NO. ISBN</string>
-    <string name="masukkan_no_isbn">Masukkan No.ISBN</string>
-    <string name="masukkan_kategori_buku">Masukkan Kategori Buku</string>
+    <string name="masukkan_no_isbn">No.ISBN</string>
+    <string name="masukkan_kategori_buku">Kategori Buku</string>
     <string name="upload_cover_buku">Upload Cover Buku</string>
     <string name="simpan">SIMPAN</string>
-    <string name="masukkan_nama_penerbit">Masukkan Nama Penerbit</string>
+    <string name="masukkan_nama_penerbit">Nama Penerbit</string>
     <string name="judul_a_z">Judul A-Z</string>
     <string name="judul_z_a">Judul Z-A</string>
     <string name="hapus">Hapus</string>
-    <string name="cover_buku">Cover Buku</string>
+    <string name="cover_buku">COVER BUKU</string>
 </resources>
