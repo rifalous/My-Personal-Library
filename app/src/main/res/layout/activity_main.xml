@@ -7,9 +7,10 @@
     tools:context="com.a4visionmedia.personallibrary.MainActivity">
 
     <ImageView
+        android:id="@+id/add_book"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:src="@drawable/ic_add"
+        android:src="@drawable/ic_done"
         android:layout_alignParentBottom="true"
         android:layout_alignParentEnd="true"
         android:layout_alignParentRight="true"
@@ -17,7 +18,7 @@
     />
 
     <android.support.v7.widget.RecyclerView
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="match_parent"
         android:id="@+id/books_rv"
         android:orientation="horizontal">

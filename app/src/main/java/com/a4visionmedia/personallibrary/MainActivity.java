@@ -9,6 +9,7 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.View;
+import android.widget.ImageView;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -30,6 +31,7 @@ public class MainActivity extends AppCompatActivity {
     private BookAdapter mAdapter;
     private RecyclerView recyclerView;
     private String mJsonData = "";
+    private ImageView mAddButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,8 +39,18 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         recyclerView = findViewById(R.id.books_rv);
+        mAddButton = findViewById(R.id.add_book);
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(MainActivity.this);
         recyclerView.setLayoutManager(layoutManager);
+
+        mAddButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Log.d("haha", "clicked");
+                Intent intent = new Intent(MainActivity.this, InputBookActivity.class);
+                startActivity(intent);
+            }
+        });
 
         new ListBookAsyncTask().execute();
 

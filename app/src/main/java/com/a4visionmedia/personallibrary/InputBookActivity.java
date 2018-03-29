@@ -42,9 +42,6 @@ public class InputBookActivity extends AppCompatActivity {
     private Bitmap FixBitmap;
     private ImageView mShowSelectedImage;
 
-    /*Buat ImageView Buat nampilin preview cover Bku yang mau diupload gi
-    * nama imageViewnya ini mShowSelectedImage ya~*/
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -124,9 +121,9 @@ public class InputBookActivity extends AppCompatActivity {
         mKategori = findViewById(R.id.kategori_buku);
         mNoISBN = findViewById(R.id.isbn_buku);
 
-        mSubmit = findViewById(R.id.upload_button);
-//        mSelectImage = findViewById();
-        /*Buat button buat mSelectImage gi*/
+        mSubmit = findViewById(R.id.submit_button);
+        mSelectImage = findViewById(R.id.select_cover);
+        mShowSelectedImage = findViewById(R.id.preview_image);
     }
 
     class PostData extends AsyncTask<String, Void, String> {
@@ -177,6 +174,7 @@ public class InputBookActivity extends AppCompatActivity {
         @Override
         protected void onPostExecute(String result) {
             Toast.makeText(getApplicationContext(), "AsnycTask Done", Toast.LENGTH_SHORT).show();
+            finish();
         }
     }
 
