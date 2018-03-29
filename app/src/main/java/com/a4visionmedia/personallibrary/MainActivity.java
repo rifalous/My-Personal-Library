@@ -86,6 +86,12 @@ public class MainActivity extends AppCompatActivity {
                 @Override
                 public void onItemClick(Book item) {
                     Intent intent = new Intent(MainActivity.this, BookDetailActivity.class);
+                    intent.putExtra("judul", item.getTitle());
+                    intent.putExtra("pengarang", item.getAuthor());
+                    intent.putExtra("penerbit", item.getPublisher());
+                    intent.putExtra("kategori", item.getCategory());
+                    intent.putExtra("isbn", item.getNoIsbn());
+                    intent.putExtra("cover", item.getCover());
                     startActivity(intent);
                 }
             });

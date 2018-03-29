@@ -9,40 +9,39 @@
     <android.support.v7.widget.CardView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_margin="10dp"
-        app:cardBackgroundColor="@color/color_cardview">
+        android:layout_margin="10dp">
 
         <LinearLayout
             android:id="@+id/img"
             android:layout_width="175dp"
-            android:layout_height="175dp"
+            android:layout_height="wrap_content"
             android:orientation="vertical">
 
         <ImageView
             android:id="@+id/coverBook"
             android:layout_width="175dp"
-            android:layout_height="130dp"
-            android:layout_margin="5dp"
+            android:layout_height="225dp"
             android:layout_gravity="center"
+            android:scaleType="fitXY"
             android:src="@mipmap/ic_launcher" />
 
         <TextView
             android:id="@+id/titleBook"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:gravity="center"
-            android:textSize="14sp"
-            tools:text="Judul"
-            android:textColor="@color/white"/>
+            android:padding="8dp"
+            android:textSize="20sp"
+            tools:text="Judul"/>
 
         <TextView
             android:id="@+id/authorBook"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:gravity="center"
+            android:paddingHorizontal="8dp"
+            android:paddingBottom="8dp"
             android:textSize="12sp"
-            tools:text="Pengarang"
-            android:textColor="@color/white"/>
+            android:textStyle="italic"
+            tools:text="Pengarang"/>
         </LinearLayout>
 
     </android.support.v7.widget.CardView>

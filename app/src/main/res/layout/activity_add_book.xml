@@ -5,8 +5,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:orientation="vertical"
     android:padding="8dp"
-    tools:context=".InputBookActivity"
-    android:background="@color/color_bg">
+    tools:context=".InputBookActivity">
 
     <LinearLayout
         android:id="@+id/judul"
@@ -17,7 +16,8 @@
         <!-- Label -->
         <TextView
             style="@style/CategoryStyle"
-            android:text="@string/judul" />
+            android:text="@string/judul"
+            tools:text="Judul"/>
 
         <!-- Input fields -->
         <LinearLayout
@@ -46,7 +46,8 @@
         <!-- Label -->
         <TextView
             style="@style/CategoryStyle"
-            android:text="@string/pengarang" />
+            android:text="@string/pengarang"
+            tools:text="Pengarang"/>
 
         <!-- Input field -->
         <LinearLayout
@@ -75,7 +76,8 @@
         <!-- Label -->
         <TextView
             style="@style/CategoryStyle"
-            android:text="@string/penerbit" />
+            android:text="@string/penerbit"
+            tools:text="Penerbit"/>
 
         <!-- Input fields -->
         <LinearLayout
@@ -103,7 +105,8 @@
         <!-- Label -->
         <TextView
             style="@style/CategoryStyle"
-            android:text="@string/kategori" />
+            android:text="@string/kategori"
+            tools:text="Kategori"/>
 
         <!-- Input fields -->
         <LinearLayout
@@ -131,7 +134,8 @@
         <!-- Label -->
         <TextView
             style="@style/CategoryStyle"
-            android:text="@string/no_isbn" />
+            android:text="@string/no_isbn"
+            tools:text="No ISBN"/>
 
         <!-- Input fields -->
         <LinearLayout
@@ -160,7 +164,8 @@
         <!-- Label -->
         <TextView
             style="@style/CategoryStyle"
-            android:text="@string/cover_buku" />
+            android:text="@string/cover_buku"
+            tools:text="Cover Buku"/>
 
         <!-- Input fields -->
         <LinearLayout
