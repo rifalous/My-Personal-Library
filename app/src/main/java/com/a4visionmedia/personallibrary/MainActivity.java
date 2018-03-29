@@ -56,6 +56,12 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
+    @Override
+    protected void onResume() {
+        new ListBookAsyncTask().execute();
+        super.onResume();
+    }
+
     class ListBookAsyncTask extends AsyncTask<URL,Void,String> {
         String BASE_URL="http://dev.beta.4visionmedia.com/booklist.json";
         @Override

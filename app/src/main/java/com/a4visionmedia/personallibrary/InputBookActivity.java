@@ -111,7 +111,6 @@ public class InputBookActivity extends AppCompatActivity {
         PostData sendData = new PostData();
         sendData.execute(judul,pengarang,penerbit, kategori, noISBN);
         finish();
-
     }
 
     public void initialize(){
