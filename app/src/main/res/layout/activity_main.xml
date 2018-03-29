@@ -10,7 +10,7 @@
         android:id="@+id/add_book"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:src="@drawable/ic_done"
+        android:src="@mipmap/ic_add_btn"
         android:layout_alignParentBottom="true"
         android:layout_alignParentEnd="true"
         android:layout_alignParentRight="true"
@@ -18,10 +18,11 @@
     />
 
     <android.support.v7.widget.RecyclerView
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:id="@+id/books_rv"
-        android:orientation="horizontal">
+        android:orientation="horizontal"
+        android:padding="8dp">
     </android.support.v7.widget.RecyclerView>
 
 </RelativeLayout>

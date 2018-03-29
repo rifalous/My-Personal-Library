@@ -1,12 +1,15 @@
 package com.a4visionmedia.personallibrary;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.StaggeredGridLayoutManager;
 import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
@@ -32,6 +35,7 @@ public class MainActivity extends AppCompatActivity {
     private RecyclerView recyclerView;
     private String mJsonData = "";
     private ImageView mAddButton;
+    private RecyclerView.LayoutManager layoutManager;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,8 +44,11 @@ public class MainActivity extends AppCompatActivity {
 
         recyclerView = findViewById(R.id.books_rv);
         mAddButton = findViewById(R.id.add_book);
-        RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(MainActivity.this);
-        recyclerView.setLayoutManager(layoutManager);
+        /*if (MainActivity.this.getResources().getConfiguration().orientation == 1) {
+            layoutManager = new StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL);
+        } else {
+            layoutManager = new StaggeredGridLayoutManager(3, StaggeredGridLayoutManager.HORIZONTAL);
+        }*/
 
         mAddButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -101,8 +108,9 @@ public class MainActivity extends AppCompatActivity {
                     startActivity(intent);
                 }
             });
-
             recyclerView.setAdapter(mAdapter);
+            layoutManager = new StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL);
+            recyclerView.setLayoutManager(layoutManager);
         }
 
         private String makeHttpRequest (URL url) throws IOException{
