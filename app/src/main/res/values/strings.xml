@@ -16,4 +16,5 @@
     <string name="judul_z_a">Judul Z-A</string>
     <string name="hapus">Hapus</string>
     <string name="cover_buku">COVER BUKU</string>
+    <string name="edit_buku">Edit Buku</string>
 </resources>
