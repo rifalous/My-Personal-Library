@@ -3,6 +3,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
     android:padding="8dp"
     tools:context=".InputBookActivity">
@@ -11,148 +12,96 @@
         android:id="@+id/judul"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal">
-
-        <!-- Label -->
-        <TextView
-            style="@style/CategoryStyle"
-            android:text="@string/judul"
-            tools:text="Judul"/>
-
-        <!-- Input fields -->
-        <LinearLayout
-            android:layout_width="0dp"
+        android:orientation="horizontal"
+        android:paddingBottom="8dp">
+        <studio.carbonylgroup.textfieldboxes.TextFieldBoxes
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_weight="2"
-            android:orientation="vertical"
-            android:paddingLeft="4dp">
+            app:labelText="Judul Buku">
 
-            <!-- Name field -->
-            <EditText
+            <studio.carbonylgroup.textfieldboxes.ExtendedEditText
                 android:id="@+id/judul_buku"
-                style="@style/EditorFieldStyle"
-                android:hint="@string/masukkan_judul_buku"/>
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
 
-        </LinearLayout>
+        </studio.carbonylgroup.textfieldboxes.TextFieldBoxes>
     </LinearLayout>
 
-    <!-- Gender category -->
     <LinearLayout
         android:id="@+id/pengarang"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal">
-
-        <!-- Label -->
-        <TextView
-            style="@style/CategoryStyle"
-            android:text="@string/pengarang"
-            tools:text="Pengarang"/>
-
-        <!-- Input field -->
-        <LinearLayout
-            android:layout_width="0dp"
+        android:orientation="horizontal"
+        android:paddingBottom="8dp">
+        <studio.carbonylgroup.textfieldboxes.TextFieldBoxes
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_weight="2"
-            android:orientation="vertical"
-            android:paddingLeft="4dp">
+            app:labelText="Pengarang">
 
-            <!-- Name field -->
-            <EditText
+            <studio.carbonylgroup.textfieldboxes.ExtendedEditText
                 android:id="@+id/pengarang_buku"
-                style="@style/EditorFieldStyle"
-                android:hint="@string/masukkan_nama_pengarang"/>
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
 
-        </LinearLayout>
+        </studio.carbonylgroup.textfieldboxes.TextFieldBoxes>
     </LinearLayout>
 
-    <!-- Measurement category -->
+
     <LinearLayout
         android:id="@+id/penerbit"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal">
-
-        <!-- Label -->
-        <TextView
-            style="@style/CategoryStyle"
-            android:text="@string/penerbit"
-            tools:text="Penerbit"/>
-
-        <!-- Input fields -->
-        <LinearLayout
-            android:layout_width="0dp"
+        android:orientation="horizontal"
+        android:paddingBottom="8dp">
+        <studio.carbonylgroup.textfieldboxes.TextFieldBoxes
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_weight="2"
-            android:orientation="vertical"
-            android:paddingLeft="4dp">
+            app:labelText="Penerbit">
 
-            <!-- Name field -->
-            <EditText
+            <studio.carbonylgroup.textfieldboxes.ExtendedEditText
                 android:id="@+id/penerbit_buku"
-                style="@style/EditorFieldStyle"
-                android:hint="@string/masukkan_nama_penerbit"/>
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
 
-        </LinearLayout>
+        </studio.carbonylgroup.textfieldboxes.TextFieldBoxes>
     </LinearLayout>
 
     <LinearLayout
         android:id="@+id/kategori"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal">
-
-        <!-- Label -->
-        <TextView
-            style="@style/CategoryStyle"
-            android:text="@string/kategori"
-            tools:text="Kategori"/>
-
-        <!-- Input fields -->
-        <LinearLayout
-            android:layout_width="0dp"
+        android:orientation="horizontal"
+        android:paddingBottom="8dp">
+        <studio.carbonylgroup.textfieldboxes.TextFieldBoxes
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_weight="2"
-            android:orientation="vertical"
-            android:paddingLeft="4dp">
+            app:labelText="Kategori">
 
-            <!-- Name field -->
-            <EditText
+            <studio.carbonylgroup.textfieldboxes.ExtendedEditText
                 android:id="@+id/kategori_buku"
-                style="@style/EditorFieldStyle"
-                android:hint="@string/masukkan_kategori_buku"/>
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
 
-        </LinearLayout>
+        </studio.carbonylgroup.textfieldboxes.TextFieldBoxes>
     </LinearLayout>
 
     <LinearLayout
         android:id="@+id/nomorISBN"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal">
-
-        <!-- Label -->
-        <TextView
-            style="@style/CategoryStyle"
-            android:text="@string/no_isbn"
-            tools:text="No ISBN"/>
-
-        <!-- Input fields -->
-        <LinearLayout
-            android:layout_width="0dp"
+        android:orientation="horizontal"
+        android:paddingBottom="8dp">
+        <studio.carbonylgroup.textfieldboxes.TextFieldBoxes
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_weight="2"
-            android:orientation="vertical"
-            android:paddingLeft="4dp">
+            app:labelText="Nomor ISBN">
 
-            <!-- Name field -->
-            <EditText
+            <studio.carbonylgroup.textfieldboxes.ExtendedEditText
                 android:id="@+id/isbn_buku"
-                style="@style/EditorFieldStyle"
-                android:hint="@string/masukkan_no_isbn"
-                android:inputType="textCapWords" />
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
 
-        </LinearLayout>
+        </studio.carbonylgroup.textfieldboxes.TextFieldBoxes>
     </LinearLayout>
 
     <LinearLayout
@@ -160,29 +109,11 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal">
-
-        <!-- Label -->
-        <TextView
-            style="@style/CategoryStyle"
-            android:text="@string/cover_buku"
-            tools:text="Cover Buku"/>
-
-        <!-- Input fields -->
-        <LinearLayout
-            android:layout_width="0dp"
+        <Button
+            android:id="@+id/select_cover"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_weight="2"
-            android:orientation="vertical"
-            android:paddingLeft="4dp">
-
-            <!-- Name field -->
-            <Button
-                android:id="@+id/select_cover"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                style="@style/button_text"
-                android:text="@string/upload_cover_buku" />
-        </LinearLayout>
+            android:text="@string/upload_cover_buku" />
     </LinearLayout>
     <LinearLayout
         android:layout_width="match_parent"
