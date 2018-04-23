@@ -6,16 +6,20 @@
     android:layout_height="match_parent"
     tools:context="com.a4visionmedia.personallibrary.MainActivity">
 
-    <ImageView
+    <android.support.design.widget.FloatingActionButton
         android:id="@+id/add_book"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_gravity="end|bottom"
         android:src="@mipmap/ic_add_btn"
+        android:scaleType="center"
+        app:backgroundTint="@color/white"
         android:layout_alignParentBottom="true"
         android:layout_alignParentEnd="true"
         android:layout_alignParentRight="true"
-        android:layout_margin="15dp"
-    />
+        android:layout_margin="16dp"
+        app:borderWidth="0dp"
+        app:elevation="5dp"/>
 
     <android.support.v7.widget.RecyclerView
         android:layout_width="match_parent"

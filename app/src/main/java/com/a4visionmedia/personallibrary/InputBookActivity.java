@@ -108,9 +108,15 @@ public class InputBookActivity extends AppCompatActivity {
         kategori = mKategori.getText().toString();
         noISBN = mNoISBN.getText().toString();
 
-        PostData sendData = new PostData();
-        sendData.execute(judul,pengarang,penerbit, kategori, noISBN);
-        finish();
+        if(judul.matches("") || pengarang.matches("") || penerbit.matches("") || kategori.matches("") || noISBN.matches("") ){
+            Toast.makeText(this, "Periksa kembali data buku anda", Toast.LENGTH_SHORT).show();
+        }else {
+            PostData sendData = new PostData();
+            sendData.execute(judul,pengarang,penerbit, kategori, noISBN);
+            finish();
+        }
+
+
     }
 
     public void initialize(){

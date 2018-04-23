@@ -34,7 +34,7 @@ public class MainActivity extends AppCompatActivity {
     private BookAdapter mAdapter;
     private RecyclerView recyclerView;
     private String mJsonData = "";
-    private ImageView mAddButton;
+    private FloatingActionButton mAddButton;
     private RecyclerView.LayoutManager layoutManager;
 
     @Override
@@ -70,7 +70,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     class ListBookAsyncTask extends AsyncTask<URL,Void,String> {
-        String BASE_URL="http://dev.beta.4visionmedia.com/booklist.json";
+        String BASE_URL="http://dev.beta.4visionmedia.com/dbtojsonbuku.php";
         @Override
         protected String doInBackground(URL... urls) {
             String jsonString = "";
