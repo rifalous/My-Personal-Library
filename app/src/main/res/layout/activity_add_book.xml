@@ -17,12 +17,14 @@
         <studio.carbonylgroup.textfieldboxes.TextFieldBoxes
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:labelText="Judul Buku">
+            app:labelText="Judul Buku"
+            app:panelBackgroundColor="@color/white">
 
             <studio.carbonylgroup.textfieldboxes.ExtendedEditText
                 android:id="@+id/judul_buku"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"/>
+                android:layout_height="wrap_content"
+                style="@style/EditorFieldStyle"/>
 
         </studio.carbonylgroup.textfieldboxes.TextFieldBoxes>
     </LinearLayout>
@@ -33,15 +35,18 @@
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         android:paddingBottom="8dp">
+
         <studio.carbonylgroup.textfieldboxes.TextFieldBoxes
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:labelText="Pengarang">
+            app:labelText="Pengarang"
+            app:panelBackgroundColor="@color/white">
 
             <studio.carbonylgroup.textfieldboxes.ExtendedEditText
                 android:id="@+id/pengarang_buku"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"/>
+                android:layout_height="wrap_content"
+                style="@style/EditorFieldStyle"/>
 
         </studio.carbonylgroup.textfieldboxes.TextFieldBoxes>
     </LinearLayout>
@@ -56,12 +61,14 @@
         <studio.carbonylgroup.textfieldboxes.TextFieldBoxes
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:labelText="Penerbit">
+            app:labelText="Penerbit"
+            app:panelBackgroundColor="@color/white">
 
             <studio.carbonylgroup.textfieldboxes.ExtendedEditText
                 android:id="@+id/penerbit_buku"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"/>
+                android:layout_height="wrap_content"
+                style="@style/EditorFieldStyle"/>
 
         </studio.carbonylgroup.textfieldboxes.TextFieldBoxes>
     </LinearLayout>
@@ -75,12 +82,14 @@
         <studio.carbonylgroup.textfieldboxes.TextFieldBoxes
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:labelText="Kategori">
+            app:labelText="Kategori"
+            app:panelBackgroundColor="@color/white">
 
             <studio.carbonylgroup.textfieldboxes.ExtendedEditText
                 android:id="@+id/kategori_buku"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"/>
+                android:layout_height="wrap_content"
+                style="@style/EditorFieldStyle"/>
 
         </studio.carbonylgroup.textfieldboxes.TextFieldBoxes>
     </LinearLayout>
@@ -94,12 +103,14 @@
         <studio.carbonylgroup.textfieldboxes.TextFieldBoxes
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:labelText="Nomor ISBN">
+            app:labelText="Nomor ISBN"
+            app:panelBackgroundColor="@color/white">
 
             <studio.carbonylgroup.textfieldboxes.ExtendedEditText
                 android:id="@+id/isbn_buku"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"/>
+                android:layout_height="wrap_content"
+                style="@style/EditorFieldStyle"/>
 
         </studio.carbonylgroup.textfieldboxes.TextFieldBoxes>
     </LinearLayout>

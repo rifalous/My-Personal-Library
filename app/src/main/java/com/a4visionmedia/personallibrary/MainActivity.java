@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.support.design.widget.FloatingActionButton;
+import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.GridLayoutManager;
@@ -29,13 +30,14 @@ import java.nio.charset.Charset;
 import java.util.ArrayList;
 import java.util.List;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements SwipeRefreshLayout.OnRefreshListener {
 
     private BookAdapter mAdapter;
     private RecyclerView recyclerView;
     private String mJsonData = "";
     private FloatingActionButton mAddButton;
     private RecyclerView.LayoutManager layoutManager;
+    private SwipeRefreshLayout mSwipeRefreshLayout;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -50,11 +52,20 @@ public class MainActivity extends AppCompatActivity {
             layoutManager = new StaggeredGridLayoutManager(3, StaggeredGridLayoutManager.HORIZONTAL);
         }*/
 
+        mSwipeRefreshLayout = findViewById(R.id.swipe_container);
+        mSwipeRefreshLayout.setOnRefreshListener(this);
+        mSwipeRefreshLayout.setColorSchemeResources(R.color.colorPrimary,
+                android.R.color.holo_green_dark,
+                android.R.color.holo_orange_dark,
+                android.R.color.holo_blue_dark);
+        mSwipeRefreshLayout.setRefreshing(true);
+
         mAddButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Log.d("haha", "clicked");
                 Intent intent = new Intent(MainActivity.this, InputBookActivity.class);
+                intent.putExtra("FLAG", "INPUT");
                 startActivity(intent);
             }
         });
@@ -67,6 +78,12 @@ public class MainActivity extends AppCompatActivity {
     protected void onResume() {
         new ListBookAsyncTask().execute();
         super.onResume();
+    }
+
+    @Override
+    public void onRefresh() {
+        mSwipeRefreshLayout.setRefreshing(true);
+        new ListBookAsyncTask().execute();
     }
 
     class ListBookAsyncTask extends AsyncTask<URL,Void,String> {
@@ -93,6 +110,7 @@ public class MainActivity extends AppCompatActivity {
 
         @Override
         protected void onPostExecute(String strings) {
+            mSwipeRefreshLayout.setRefreshing(false);
             List<Book> bookList = getJsonData();
 
             mAdapter = new BookAdapter(bookList, MainActivity.this, new OnClickListener() {
@@ -111,6 +129,7 @@ public class MainActivity extends AppCompatActivity {
             recyclerView.setAdapter(mAdapter);
             layoutManager = new StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL);
             recyclerView.setLayoutManager(layoutManager);
+
         }
 
         private String makeHttpRequest (URL url) throws IOException{

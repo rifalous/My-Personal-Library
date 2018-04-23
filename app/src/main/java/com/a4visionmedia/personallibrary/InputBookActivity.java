@@ -18,6 +18,8 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Toast;
 
+import com.squareup.picasso.Picasso;
+
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.ByteArrayOutputStream;
@@ -38,20 +40,26 @@ public class InputBookActivity extends AppCompatActivity {
 
     private EditText mJudul, mPengarang, mPenerbit, mKategori, mNoISBN;
     private Button mSubmit, mSelectImage;
-    private String mConvertedImageString, judul, pengarang, penerbit, kategori, noISBN;
+    private String mConvertedImageString, judul, pengarang, penerbit, kategori, noISBN, FLAG;
     private String ImagePath = "image_path";
     private String ImageName = "image_name";
     private boolean check = true;
-    private Bitmap FixBitmap;
+    private Bitmap FixBitmap = null;
     private ImageView mShowSelectedImage;
     private ProgressDialog mProgressDialog;
+    Intent getIntentData;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_book);
 
+        getIntentData = getIntent();
+        FLAG = getIntentData.getStringExtra("FLAG");
+
         initialize();
+
+        Intent intent = getIntent();
 
         mSelectImage.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -115,7 +123,11 @@ public class InputBookActivity extends AppCompatActivity {
             Toast.makeText(this, "Periksa kembali data buku anda", Toast.LENGTH_SHORT).show();
             Log.d("empty", "data kosong");
         }else {
-            mConvertedImageString = getStringImage(FixBitmap);
+            if(FixBitmap!=null){
+                mConvertedImageString = getStringImage(FixBitmap);
+            }else{
+                mConvertedImageString = "";
+            }
             Log.d("emptyw", "adaam");
             PostData sendData = new PostData();
             sendData.execute(judul,pengarang,penerbit, kategori, noISBN);
@@ -134,6 +146,15 @@ public class InputBookActivity extends AppCompatActivity {
         mSubmit = findViewById(R.id.submit_button);
         mSelectImage = findViewById(R.id.select_cover);
         mShowSelectedImage = findViewById(R.id.preview_image);
+
+        if (FLAG.matches("EDIT")){
+            mJudul.setText(getIntentData.getStringExtra("judul"));
+            mPengarang.setText(getIntentData.getStringExtra("pengarang"));
+            mPenerbit.setText(getIntentData.getStringExtra("penerbit"));
+            mKategori.setText(getIntentData.getStringExtra("kategori"));
+            mNoISBN.setText(getIntentData.getStringExtra("isbn"));
+            Picasso.with(getApplicationContext()).load(getIntentData.getStringExtra("cover")).into( mShowSelectedImage);
+        }
     }
 
     class PostData extends AsyncTask<String, Void, String> {
@@ -145,7 +166,11 @@ public class InputBookActivity extends AppCompatActivity {
         protected void onPreExecute() {
             dialog.setMessage("Sedang Mengupload Buku. \nMohon Tunggu.");
             dialog.show();
-            add_url = "http://dev.beta.4visionmedia.com/add_buku_android.php";
+            if(FLAG.matches("INPUT")){
+                add_url = "http://dev.beta.4visionmedia.com/add_buku_android.php";
+            }else if (FLAG.matches("EDIT")){
+                add_url = "http://dev.beta.4visionmedia.com/edit_buku.php";
+            }
         }
 
         @Override
@@ -173,7 +198,11 @@ public class InputBookActivity extends AppCompatActivity {
             HashMapParams.put("penerbit", penerbit);
             HashMapParams.put("kategori", kategori);
             HashMapParams.put(ImageName, judul);
-            HashMapParams.put(ImagePath, mConvertedImageString);
+
+            if(mConvertedImageString!=null){
+                HashMapParams.put(ImagePath, mConvertedImageString);
+            }
+
             Log.d("MidData", no_isbn + " " + judul + " " + pengarang + " " + penerbit + " " +  kategori);
             Log.d("MiddData", mConvertedImageString);
 

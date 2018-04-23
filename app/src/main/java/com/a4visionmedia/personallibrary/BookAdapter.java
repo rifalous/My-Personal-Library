@@ -9,6 +9,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.squareup.picasso.MemoryPolicy;
 import com.squareup.picasso.Picasso;
 
 import java.util.List;
@@ -47,7 +48,7 @@ public class BookAdapter extends RecyclerView.Adapter<BookAdapter.ViewHolder> {
         if(imgUrl==null){
             holder.booksImage.setImageResource(R.drawable.no_image);
         }else{
-            Picasso.with(context).load(imgUrl).into(holder.booksImage);
+            Picasso.with(context).load(imgUrl).memoryPolicy(MemoryPolicy.NO_CACHE, MemoryPolicy.NO_STORE).into(holder.booksImage);
         }
         //holder.booksAuthor.setText(feed.getmUrl());
     }
