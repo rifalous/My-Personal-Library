@@ -1,9 +1,12 @@
 package com.a4visionmedia.personallibrary;
 
+import android.app.ProgressDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.net.Uri;
 import android.os.AsyncTask;
+import android.os.Handler;
 import android.provider.MediaStore;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -41,6 +44,7 @@ public class InputBookActivity extends AppCompatActivity {
     private boolean check = true;
     private Bitmap FixBitmap;
     private ImageView mShowSelectedImage;
+    private ProgressDialog mProgressDialog;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -65,7 +69,6 @@ public class InputBookActivity extends AppCompatActivity {
         mSubmit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                mConvertedImageString = getStringImage(FixBitmap);
                 getText();
             }
         });
@@ -110,10 +113,12 @@ public class InputBookActivity extends AppCompatActivity {
 
         if(judul.matches("") || pengarang.matches("") || penerbit.matches("") || kategori.matches("") || noISBN.matches("") ){
             Toast.makeText(this, "Periksa kembali data buku anda", Toast.LENGTH_SHORT).show();
+            Log.d("empty", "data kosong");
         }else {
+            mConvertedImageString = getStringImage(FixBitmap);
+            Log.d("emptyw", "adaam");
             PostData sendData = new PostData();
             sendData.execute(judul,pengarang,penerbit, kategori, noISBN);
-            finish();
         }
 
 
@@ -133,11 +138,13 @@ public class InputBookActivity extends AppCompatActivity {
 
     class PostData extends AsyncTask<String, Void, String> {
 
+        ProgressDialog dialog = new ProgressDialog(InputBookActivity.this);
         String add_url;
 
         @Override
         protected void onPreExecute() {
-
+            dialog.setMessage("Sedang Mengupload Buku. \nMohon Tunggu.");
+            dialog.show();
             add_url = "http://dev.beta.4visionmedia.com/add_buku_android.php";
         }
 
@@ -178,7 +185,16 @@ public class InputBookActivity extends AppCompatActivity {
 
         @Override
         protected void onPostExecute(String result) {
-            Toast.makeText(getApplicationContext(), "AsnycTask Done", Toast.LENGTH_SHORT).show();
+            if(dialog.isShowing()){
+                dialog.dismiss();
+            }
+            Toast.makeText(getApplicationContext(),"Upload Done", Toast.LENGTH_SHORT).show();
+            new Handler().postDelayed(new Runnable() {
+                @Override
+                public void run() {
+                    // Magic here
+                }
+            }, 1000);
             finish();
         }
     }
