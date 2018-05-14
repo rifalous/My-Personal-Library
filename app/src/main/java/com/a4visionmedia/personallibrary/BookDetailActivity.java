@@ -19,6 +19,7 @@ public class BookDetailActivity extends AppCompatActivity {
     private String mISBN;
     private String mCover;
     private String mJudul;
+    private String mUsername;
     private LinearLayout mEditButton;
     private TextView mTitleBook, mAuthorBook, mPubBook, mCatBook, mNoISBN;
     private ImageView mCoverBook;
@@ -38,6 +39,7 @@ public class BookDetailActivity extends AppCompatActivity {
         mKategori = getIntentData.getStringExtra("kategori");
         mISBN = getIntentData.getStringExtra("isbn");
         mCover = getIntentData.getStringExtra("cover");
+        mUsername = getIntentData.getStringExtra("username");
 
         mTitleBook.setText(mJudul);
         mAuthorBook.setText(mPengarang);
@@ -57,6 +59,7 @@ public class BookDetailActivity extends AppCompatActivity {
                 intent.putExtra("kategori", mKategori);
                 intent.putExtra("isbn", mISBN);
                 intent.putExtra("cover", mCover);
+                intent.putExtra("username", mUsername);
                 startActivity(intent);
             }
         });

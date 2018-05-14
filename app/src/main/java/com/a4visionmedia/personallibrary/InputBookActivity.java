@@ -43,6 +43,7 @@ public class InputBookActivity extends AppCompatActivity {
     private String mConvertedImageString, judul, pengarang, penerbit, kategori, noISBN, FLAG;
     private String ImagePath = "image_path";
     private String ImageName = "image_name";
+    private String mUsername;
     private boolean check = true;
     private Bitmap FixBitmap = null;
     private ImageView mShowSelectedImage;
@@ -56,6 +57,8 @@ public class InputBookActivity extends AppCompatActivity {
 
         getIntentData = getIntent();
         FLAG = getIntentData.getStringExtra("FLAG");
+        mUsername = getIntentData.getStringExtra("username");
+        Log.d("userrrrr", mUsername);
 
         initialize();
 

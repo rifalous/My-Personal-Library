@@ -7,8 +7,10 @@ import android.content.Intent;
 import android.graphics.Color;
 import android.os.AsyncTask;
 import android.os.Build;
+import android.support.annotation.NonNull;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.NavigationView;
+import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
@@ -32,12 +34,16 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.BufferedReader;
+import java.io.BufferedWriter;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.io.OutputStream;
+import java.io.OutputStreamWriter;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.net.URLEncoder;
 import java.nio.charset.Charset;
 import java.util.ArrayList;
 import java.util.List;
@@ -54,11 +60,16 @@ public class MainActivity extends AppCompatActivity implements SwipeRefreshLayou
     private DrawerLayout mDrawerLayout;
     private ActionBarDrawerToggle mToggle;
     private NavigationView mNavigationView;
+    private Intent intentExtra;
+    private String mUsername;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        intentExtra = getIntent();
+        mUsername = intentExtra.getStringExtra("username");
 
         mDrawerLayout = findViewById(R.id.navigation_drawer);
         mToggle = new ActionBarDrawerToggle(this, mDrawerLayout, R.string.drawer_open,R.string.drawer_close);
@@ -75,6 +86,20 @@ public class MainActivity extends AppCompatActivity implements SwipeRefreshLayou
         mAddButton = findViewById(R.id.add_book);
 
         mNavigationView = findViewById(R.id.navigation_view);
+        mNavigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
+            @Override
+            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+                switch (item.getItemId()) {
+                    case R.id.logout: {
+                        finish();
+                        break;
+                    }
+                }
+                //close navigation drawer
+                mDrawerLayout.closeDrawer(GravityCompat.START);
+                return true;
+            }
+        });
 
 
 
@@ -100,6 +125,7 @@ public class MainActivity extends AppCompatActivity implements SwipeRefreshLayou
                 Log.d("haha", "clicked");
                 Intent intent = new Intent(MainActivity.this, InputBookActivity.class);
                 intent.putExtra("FLAG", "INPUT");
+                intent.putExtra("username", mUsername);
                 startActivity(intent);
             }
         });
@@ -107,6 +133,7 @@ public class MainActivity extends AppCompatActivity implements SwipeRefreshLayou
         new ListBookAsyncTask().execute();
 
     }
+
 
     @Override
     protected void onResume() {
@@ -157,6 +184,7 @@ public class MainActivity extends AppCompatActivity implements SwipeRefreshLayou
                     intent.putExtra("kategori", item.getCategory());
                     intent.putExtra("isbn", item.getNoIsbn());
                     intent.putExtra("cover", item.getCover());
+                    intent.putExtra("username", mUsername);
                     startActivity(intent);
                 }
             });
@@ -168,25 +196,31 @@ public class MainActivity extends AppCompatActivity implements SwipeRefreshLayou
 
         private String makeHttpRequest (URL url) throws IOException{
             String jsonResponse = "";
-            HttpURLConnection urlConnection = null;
-            InputStream inputStream = null;
             try{
-                urlConnection = (HttpURLConnection) url.openConnection();
-                urlConnection.setRequestMethod("GET");
-                urlConnection.setReadTimeout(10000);
-                urlConnection.setConnectTimeout(15000);
-                urlConnection.connect();
-                inputStream = urlConnection.getInputStream();
-                jsonResponse = readFromStream(inputStream);
-            }catch (IOException e){
+                HttpURLConnection httpURLConnection = (HttpURLConnection) url.openConnection();
+                httpURLConnection.setRequestMethod("POST");
+                httpURLConnection.setDoOutput(true);
+                OutputStream outputStream = httpURLConnection.getOutputStream();
+                BufferedWriter bufferedWriter = new BufferedWriter(new OutputStreamWriter(outputStream, "UTF-8"));
 
-            } finally {
-                if (urlConnection != null){
-                    urlConnection.disconnect();
-                }
-                if(inputStream != null){
-                    inputStream.close();
-                }
+                String data = URLEncoder.encode("username", "UTF-8")
+                        + "=" + URLEncoder.encode(mUsername, "UTF-8");
+
+
+                bufferedWriter.write(data);
+                bufferedWriter.flush();
+                bufferedWriter.close();
+                outputStream.close();
+                InputStream inputStream = httpURLConnection.getInputStream();
+                jsonResponse = readFromStream(inputStream);
+                inputStream.close();
+                httpURLConnection.disconnect();
+
+                return jsonResponse;
+            }catch (MalformedURLException e){
+                e.printStackTrace();
+            } catch (IOException e) {
+                e.printStackTrace();
             }
             return jsonResponse;
         }
@@ -293,7 +327,7 @@ public class MainActivity extends AppCompatActivity implements SwipeRefreshLayou
             searchView.setIconified(true);
             return;
         }
-        super.onBackPressed();
+        moveTaskToBack(true);
     }
 
 }
