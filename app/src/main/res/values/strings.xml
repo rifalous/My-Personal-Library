@@ -17,11 +17,15 @@
     <string name="hapus">Hapus</string>
     <string name="cover_buku">COVER BUKU</string>
     <string name="edit_buku">Edit Buku</string>
+    <string name="sign_in">Sign In</string>
+    <string name="register_here">Register</string>
     <string name="username">Username</string>
     <string name="email">Email</string>
     <string name="password">Password</string>
-    <string name="register">Daftar</string>
-    <string name="password_again">Ulangi Password</string>
-    <string name="register_here">Belum Punya Akun? Daftar Disini</string>
-    <string name="sign_in">Masuk</string>
+    <string name="password_again">Password</string>
+    <string name="register">Register</string>
+    <string name="search_hint">Judul buku, kategori, dll . .</string>
+    <string name="search_judul">Search</string>
+    <string name="drawer_open">open</string>
+    <string name="drawer_close">close</string>
 </resources>

@@ -6,4 +6,5 @@
     <color name="white">#FFFFFF</color>
     <color name="color_cardview">#2BAE2A</color>
     <color name="color_bg">#b83de468</color>
+    <color name="black">#000000</color>
 </resources>

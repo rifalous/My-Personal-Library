@@ -224,7 +224,8 @@ public class InputBookActivity extends AppCompatActivity {
                     // Magic here
                 }
             }, 1000);
-            finish();
+            Intent mainIntent = new Intent(InputBookActivity.this, MainActivity.class);
+            startActivity(mainIntent);
         }
     }
 
