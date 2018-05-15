@@ -3,6 +3,7 @@
     <color name="colorPrimary">#1E5618</color>
     <color name="colorPrimaryDark">#1E5618</color>
     <color name="colorAccent">#2BAE2A</color>
+    <color name="color_danger">#DC143C</color>
     <color name="white">#FFFFFF</color>
     <color name="color_cardview">#2BAE2A</color>
     <color name="color_bg">#b83de468</color>

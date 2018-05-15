@@ -24,20 +24,46 @@
         android:layout_margin="10dp"/>
 
     <LinearLayout
-        android:id="@+id/edit_buku"
-        android:layout_width="100dp"
-        android:layout_height="35dp"
-        android:layout_gravity="center"
-        android:visibility="visible"
-        android:background="@color/color_cardview"
-        android:orientation="horizontal">
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:gravity="center"
-            android:text="@string/edit_buku"
-            android:textStyle="bold"
-            android:textColor="@color/white"/>
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_gravity="center">
+
+        <LinearLayout
+            android:id="@+id/edit_buku"
+            android:layout_width="100dp"
+            android:layout_height="35dp"
+            android:layout_gravity="center"
+            android:visibility="visible"
+            android:background="@color/color_cardview"
+            android:orientation="horizontal"
+            android:layout_marginRight="10dp">
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:text="@string/edit_buku"
+                android:textStyle="bold"
+                android:textColor="@color/white"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/hapus_buku"
+            android:layout_width="100dp"
+            android:layout_height="35dp"
+            android:layout_gravity="center"
+            android:visibility="visible"
+            android:background="@color/color_danger"
+            android:orientation="horizontal">
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:text="@string/hapus_buku"
+                android:textStyle="bold"
+                android:textColor="@color/white"/>
+        </LinearLayout>
+
     </LinearLayout>
 
     <View
