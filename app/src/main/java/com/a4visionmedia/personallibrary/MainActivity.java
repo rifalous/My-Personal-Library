@@ -94,6 +94,27 @@ public class MainActivity extends AppCompatActivity implements SwipeRefreshLayou
                         finish();
                         break;
                     }
+                    case R.id.romance: {
+                        mAdapter.getFilter().filter("romance");
+                        break;
+                    }
+                    case R.id.remaja: {
+                        mAdapter.getFilter().filter("remaja");
+                        break;
+                    }
+                    case R.id.biografi: {
+                        mAdapter.getFilter().filter("biografi");
+                        break;
+                    }
+                    case R.id.inspirasional: {
+                        mAdapter.getFilter().filter("inspirational");
+                        break;
+                    }
+                    case R.id.horror: {
+                        mAdapter.getFilter().filter("horror");
+                        break;
+                    }
+
                 }
                 //close navigation drawer
                 mDrawerLayout.closeDrawer(GravityCompat.START);
