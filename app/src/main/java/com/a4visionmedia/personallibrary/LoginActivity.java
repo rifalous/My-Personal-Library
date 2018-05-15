@@ -49,9 +49,9 @@ public class LoginActivity extends AppCompatActivity {
         SharedPreferences settings = getSharedPreferences(PREFS_NAME, 0);
         mUsername = settings.getString("username", null);
         mPassword = settings.getString("password", null);
-        if(!mUsername.equals(null)){
+/*        if(!mUsername.equals(null)){
             new UserDataAsyncTask().execute();
-        }
+        }*/
 
         final EditText etUsername = (EditText) findViewById(R.id.etUsername);
         final EditText etPassword = (EditText) findViewById(R.id.etPassword);
