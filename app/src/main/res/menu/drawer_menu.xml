@@ -1,4 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:id="@+id/remaja" android:title="Remaja"/>
+    <item android:id="@+id/romance" android:title="Romance"/>
+    <item android:id="@+id/biografi" android:title="Biografi"/>
+    <item android:id="@+id/horror" android:title="Horror"/>
+    <item android:id="@+id/inspirasional" android:title="Inspirasional"/>
     <item android:id="@+id/logout" android:title="Logout"/>
 </menu>

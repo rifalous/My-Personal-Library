@@ -2,7 +2,8 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/MyPersonalLibrary.iml" filepath="$PROJECT_DIR$/MyPersonalLibrary.iml" />
+      <module fileurl="file://D:\4 Vision Media Project\PersonalLibrary\PersonalLibrary\MyPersonalLibrary.iml" filepath="D:\4 Vision Media Project\PersonalLibrary\PersonalLibrary\MyPersonalLibrary.iml" />
+      <module fileurl="file://$PROJECT_DIR$/PersonalLibrary.iml" filepath="$PROJECT_DIR$/PersonalLibrary.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
     </modules>
   </component>

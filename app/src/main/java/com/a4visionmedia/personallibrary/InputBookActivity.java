@@ -133,7 +133,7 @@ public class InputBookActivity extends AppCompatActivity {
             }
             Log.d("emptyw", "adaam");
             PostData sendData = new PostData();
-            sendData.execute(judul,pengarang,penerbit, kategori, noISBN);
+            sendData.execute(judul,pengarang,penerbit, kategori, noISBN, mUsername);
         }
 
 
@@ -184,12 +184,13 @@ public class InputBookActivity extends AppCompatActivity {
         @Override
         protected String doInBackground(String... args) {
             Log.d("StartData", "Starting");
-            String judul, pengarang, penerbit, kategori, no_isbn;
+            String judul, pengarang, penerbit, kategori, no_isbn, username;
             judul = args[0];
             pengarang = args[1];
             penerbit = args[2];
             kategori = args[3];
             no_isbn = args[4];
+            username = args[5];
 
             ImageProcessClass imageProcessClass = new ImageProcessClass();
 
@@ -200,6 +201,7 @@ public class InputBookActivity extends AppCompatActivity {
             HashMapParams.put("pengarang", pengarang);
             HashMapParams.put("penerbit", penerbit);
             HashMapParams.put("kategori", kategori);
+            HashMapParams.put("username", username);
             HashMapParams.put(ImageName, judul);
 
             if(mConvertedImageString!=null){
