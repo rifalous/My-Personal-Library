@@ -1,2 +1,2 @@
 # MyPersonalLibrary
-My Personal Library is an Android Apps for managing your Books, so you can make your Personal Library
+My Personal Library is an Android App for managing your Books, so you can make your Personal Library
